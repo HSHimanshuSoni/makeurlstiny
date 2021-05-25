@@ -1,4 +1,18 @@
 import React from "react";
+import {
+  EmailShareButton,
+  EmailIcon,
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+  WhatsappShareButton,
+  TelegramShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  TelegramIcon,
+  WhatsappIcon,
+  LinkedinIcon,
+} from "react-share";
 
 const HomeScreen = () => {
   return (
@@ -36,6 +50,64 @@ const HomeScreen = () => {
               Shorten
             </button>
           </form>
+          <div className="px-7 py-5 bg-gray-100 mt-6 rounded  flex flex-col">
+            <a
+              href="https://link.com"
+              className="font-semibold text-lg text-purple-800"
+            >
+              {"https://link.com"}
+            </a>
+            <p className="text-gray-700 mt-4">Share Now:</p>
+            <div className="flex flex-row mt-2 space-x-4">
+              <EmailShareButton
+                subject="Shorten Link By MakeURLsTiny"
+                body={"Your Shorten Link: LINK"}
+                className="focus:outline-none"
+              >
+                <EmailIcon size={32} round />
+              </EmailShareButton>
+
+              <FacebookShareButton
+                url={"shareUrl"}
+                quote={"title"}
+                className="focus:outline-none"
+              >
+                <FacebookIcon size={32} round />
+              </FacebookShareButton>
+
+              <TwitterShareButton
+                url={"shareUrl"}
+                title={"title"}
+                className="focus:outline-none"
+              >
+                <TwitterIcon size={32} round />
+              </TwitterShareButton>
+
+              <TelegramShareButton
+                url={"shareUrl"}
+                title={"title"}
+                className="focus:outline-none"
+              >
+                <TelegramIcon size={32} round />
+              </TelegramShareButton>
+
+              <WhatsappShareButton
+                url={"shareUrl"}
+                title={"title"}
+                separator=":: "
+                className="focus:outline-none"
+              >
+                <WhatsappIcon size={32} round />
+              </WhatsappShareButton>
+
+              <LinkedinShareButton
+                url={"shareUrl"}
+                className="focus:outline-none"
+              >
+                <LinkedinIcon size={32} round />
+              </LinkedinShareButton>
+            </div>
+          </div>
         </div>
       </div>
       <div className="flex flex-col text-center w-full my-4 md:my-6">
