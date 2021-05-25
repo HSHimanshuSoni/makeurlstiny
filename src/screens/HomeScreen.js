@@ -35,12 +35,24 @@ const HomeScreen = () => {
               Shorten
             </button>
           </form>
-          <div className="flex flex-col">
-            <a href="https://github.com/harshverma036">
-              <i className="fab fa-github" />
-            </a>
-          </div>
         </div>
+      </div>
+      <div className="flex flex-col text-center w-full my-6">
+        <a
+          href="https://github.com/harshverma036"
+          className="text-2xl md:text-3xl mb-3 text-gray-700 hover:text-black"
+        >
+          <i className="fab fa-github" />
+        </a>
+        <p className="text-gray-600">
+          Developed With ❤ By{" "}
+          <a
+            href="https://harshverma.netlify.app/"
+            className="font-medium text-purple-600 hover:text-purple-900"
+          >
+            Harsh Verma
+          </a>
+        </p>
       </div>
     </div>
   );
