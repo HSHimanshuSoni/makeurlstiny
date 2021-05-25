@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   EmailShareButton,
   EmailIcon,
@@ -13,8 +13,34 @@ import {
   WhatsappIcon,
   LinkedinIcon,
 } from "react-share";
+const BitlyClient = require("bitly").BitlyClient;
 
 const HomeScreen = () => {
+  const [originalUrl, setOriginalUrl] = useState("");
+  const [isShorten, setIsShorten] = useState(false);
+  const [shortenLink, setShortenLink] = useState("");
+
+  const ACCESS_TOKEN = "e9e24714f7ec8ddd24dcf0e419281e4837a2f553";
+  const bit_ly = new BitlyClient(ACCESS_TOKEN);
+
+  const shortLink = (url) => {
+    bit_ly
+      .shorten(url)
+      .then((res) => {
+        setIsShorten(true);
+        setShortenLink(res.link);
+        console.log(`Res: ${res.link}`);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  //   shortLink();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    shortLink(originalUrl);
+  };
+
   return (
     <div className="container mx-auto px-3 md:px-12 pt-7 md:pt-10">
       <div className="grid grid-cols-1 md:grid-cols-2">
@@ -26,13 +52,15 @@ const HomeScreen = () => {
           />
         </div>
         <div className="text-left pt-14 md:pt-32 md:pl-7">
-          <p className="text-5xl md:text-6xl text-purple-800">Make URLs Tiny</p>
+          <p className="text-5xl md:text-6xl text-purple-800 font-bold">
+            Make URLs Tiny
+          </p>
           <p className="mt-6 text-xl text-gray-500">
             <span className="text-purple-800">Makeurlstiny</span> URL shortener
             which takes some long, unwieldy link and turns it into a shorter,
             easy-to-share one.
           </p>
-          <form className="flex flex-col mt-5">
+          <form className="flex flex-col mt-5" onSubmit={submitHandler}>
             <label htmlFor="url" className="text-lg text-purple-700 mb-2">
               Enter URL
             </label>
@@ -42,6 +70,8 @@ const HomeScreen = () => {
               id="url"
               required
               className="px-5 py-3 rounded ring-2 ring-gray-200 transition duration-200 focus:outline-none focus:ring-purple-700 text-xl"
+              value={originalUrl}
+              onChange={(e) => setOriginalUrl(e.target.value)}
             />
             <button
               type="submit"
@@ -50,64 +80,66 @@ const HomeScreen = () => {
               Shorten
             </button>
           </form>
-          <div className="px-7 py-5 bg-gray-100 mt-6 rounded  flex flex-col">
-            <a
-              href="https://link.com"
-              className="font-semibold text-lg text-purple-800"
-            >
-              {"https://link.com"}
-            </a>
-            <p className="text-gray-700 mt-4">Share Now:</p>
-            <div className="flex flex-row mt-2 space-x-4">
-              <EmailShareButton
-                subject="Shorten Link By MakeURLsTiny"
-                body={"Your Shorten Link: LINK"}
-                className="focus:outline-none"
+          {isShorten && (
+            <div className="px-7 py-5 bg-gray-100 mt-6 rounded  flex flex-col">
+              <a
+                href={shortenLink}
+                className="font-semibold text-lg text-purple-800"
               >
-                <EmailIcon size={32} round />
-              </EmailShareButton>
+                {shortenLink}
+              </a>
+              <p className="text-gray-700 mt-4">Share Now:</p>
+              <div className="flex flex-row mt-2 space-x-4">
+                <EmailShareButton
+                  subject="Shorten Link By MakeURLsTiny"
+                  body={"Your Shorten Link: LINK"}
+                  className="focus:outline-none"
+                >
+                  <EmailIcon size={32} round />
+                </EmailShareButton>
 
-              <FacebookShareButton
-                url={"shareUrl"}
-                quote={"title"}
-                className="focus:outline-none"
-              >
-                <FacebookIcon size={32} round />
-              </FacebookShareButton>
+                <FacebookShareButton
+                  url={"shareUrl"}
+                  quote={"title"}
+                  className="focus:outline-none"
+                >
+                  <FacebookIcon size={32} round />
+                </FacebookShareButton>
 
-              <TwitterShareButton
-                url={"shareUrl"}
-                title={"title"}
-                className="focus:outline-none"
-              >
-                <TwitterIcon size={32} round />
-              </TwitterShareButton>
+                <TwitterShareButton
+                  url={"shareUrl"}
+                  title={"title"}
+                  className="focus:outline-none"
+                >
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
 
-              <TelegramShareButton
-                url={"shareUrl"}
-                title={"title"}
-                className="focus:outline-none"
-              >
-                <TelegramIcon size={32} round />
-              </TelegramShareButton>
+                <TelegramShareButton
+                  url={"shareUrl"}
+                  title={"title"}
+                  className="focus:outline-none"
+                >
+                  <TelegramIcon size={32} round />
+                </TelegramShareButton>
 
-              <WhatsappShareButton
-                url={"shareUrl"}
-                title={"title"}
-                separator=":: "
-                className="focus:outline-none"
-              >
-                <WhatsappIcon size={32} round />
-              </WhatsappShareButton>
+                <WhatsappShareButton
+                  url={"shareUrl"}
+                  title={"title"}
+                  separator=":: "
+                  className="focus:outline-none"
+                >
+                  <WhatsappIcon size={32} round />
+                </WhatsappShareButton>
 
-              <LinkedinShareButton
-                url={"shareUrl"}
-                className="focus:outline-none"
-              >
-                <LinkedinIcon size={32} round />
-              </LinkedinShareButton>
+                <LinkedinShareButton
+                  url={"shareUrl"}
+                  className="focus:outline-none"
+                >
+                  <LinkedinIcon size={32} round />
+                </LinkedinShareButton>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
       <div className="flex flex-col text-center w-full my-4 md:my-6">
