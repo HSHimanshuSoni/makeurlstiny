@@ -11,11 +11,12 @@ const HomeScreen = () => {
             className="h-64 mx-auto md:h-full"
           />
         </div>
-        <div className="text-left pt-8 md:pt-32 md:pl-7">
-          <p className="text-5xl md:text-6xl">Make Link Tiny</p>
-          <p className="mt-6 text-lg md:text-xl text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-            odio asperiores consectetur modi placeat. Pariatur, neque.
+        <div className="text-left pt-14 md:pt-32 md:pl-7">
+          <p className="text-5xl md:text-6xl text-purple-800">Make URLs Tiny</p>
+          <p className="mt-6 text-xl text-gray-500">
+            <span className="text-purple-800">Makeurlstiny</span> URL shortener
+            which takes some long, unwieldy link and turns it into a shorter,
+            easy-to-share one.
           </p>
           <form className="flex flex-col mt-5">
             <label htmlFor="url" className="text-lg text-purple-700 mb-2">
@@ -37,7 +38,7 @@ const HomeScreen = () => {
           </form>
         </div>
       </div>
-      <div className="flex flex-col text-center w-full my-6">
+      <div className="flex flex-col text-center w-full my-4 md:my-6">
         <a
           href="https://github.com/harshverma036"
           className="text-2xl md:text-3xl mb-3 text-gray-700 hover:text-black"
