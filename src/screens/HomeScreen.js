@@ -158,7 +158,7 @@ const HomeScreen = () => {
       </div>
       <div className="flex flex-col text-center w-full my-4 md:my-6">
         <a
-          href="https://github.com/harshverma036/makelinktiny"
+          href="https://github.com/harshverma036/makeurlstiny"
           className="text-2xl md:text-3xl mb-3 text-gray-700 hover:text-black"
         >
           <i className="fab fa-github" />
