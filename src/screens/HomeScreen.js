@@ -34,8 +34,6 @@ const HomeScreen = () => {
       .catch((err) => console.error(err));
   };
 
-  //   shortLink();
-
   const submitHandler = (e) => {
     e.preventDefault();
     shortLink(originalUrl);
@@ -50,11 +48,11 @@ const HomeScreen = () => {
   return (
     <div className="container mx-auto px-3 md:px-12 pt-7 md:pt-10">
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="text-center">
+        <div className="text-center mt-12 md:mt-0">
           <img
             src="makelinktiny_logo.svg"
             alt="makelinktiny_logo"
-            className="h-64 mx-auto md:h-full"
+            className="animate-bounce h-64 md:animate-pulse mx-auto md:h-full"
           />
         </div>
         <div className="text-left pt-14 md:pt-32 md:pl-7">
@@ -84,7 +82,7 @@ const HomeScreen = () => {
                 type="submit"
                 className="px-6 py-4 bg-purple-700 text-white text-xl font-semibold transition duration-200 hover:bg-purple-800 focus:outline-none rounded-md mt-5 max-w-max"
               >
-                Shorten
+                {"Create Shorten"}
               </button>
               {isShorten && (
                 <button
@@ -107,48 +105,48 @@ const HomeScreen = () => {
               <p className="text-gray-700 mt-4">Share Now:</p>
               <div className="flex flex-row mt-2 space-x-4">
                 <EmailShareButton
-                  subject="Shorten Link By MakeURLsTiny"
-                  body={"Your Shorten Link: LINK"}
+                  subject="Link Short By MakeURLsTiny"
+                  body={`Tap on link:\n ${shortenLink}`}
                   className="focus:outline-none"
                 >
                   <EmailIcon size={32} round />
                 </EmailShareButton>
 
                 <FacebookShareButton
-                  url={"shareUrl"}
-                  quote={"title"}
+                  url={`Tap on link:\n ${shortenLink}`}
+                  quote={"Link Short By MakeURLsTiny"}
                   className="focus:outline-none"
                 >
                   <FacebookIcon size={32} round />
                 </FacebookShareButton>
 
                 <TwitterShareButton
-                  url={"shareUrl"}
-                  title={"title"}
+                  url={`Tap on link:\n ${shortenLink}`}
+                  title={"Link Short By MakeURLsTiny"}
                   className="focus:outline-none"
                 >
                   <TwitterIcon size={32} round />
                 </TwitterShareButton>
 
                 <TelegramShareButton
-                  url={"shareUrl"}
-                  title={"title"}
+                  url={`Tap on link:\n ${shortenLink}`}
+                  title={"Link Short By MakeURLsTiny"}
                   className="focus:outline-none"
                 >
                   <TelegramIcon size={32} round />
                 </TelegramShareButton>
 
                 <WhatsappShareButton
-                  url={"shareUrl"}
-                  title={"title"}
-                  separator=":: "
+                  url={`Tap on link:\n ${shortenLink}`}
+                  title={"Link Short By MakeURLsTiny"}
+                  separator={":\n\n"}
                   className="focus:outline-none"
                 >
                   <WhatsappIcon size={32} round />
                 </WhatsappShareButton>
 
                 <LinkedinShareButton
-                  url={"shareUrl"}
+                  url={`Tap on link:\n ${shortenLink}`}
                   className="focus:outline-none"
                 >
                   <LinkedinIcon size={32} round />
@@ -160,7 +158,7 @@ const HomeScreen = () => {
       </div>
       <div className="flex flex-col text-center w-full my-4 md:my-6">
         <a
-          href="https://github.com/harshverma036"
+          href="https://github.com/harshverma036/makelinktiny"
           className="text-2xl md:text-3xl mb-3 text-gray-700 hover:text-black"
         >
           <i className="fab fa-github" />
