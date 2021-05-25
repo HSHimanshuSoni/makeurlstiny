@@ -1,9 +1,10 @@
 import './App.css';
+import HomeScreen from './screens/HomeScreen';
 
 function App() {
   return (
     <div>
-      <div className="text-red-600">Hello Tailwind</div>
+      <HomeScreen />
     </div>
   );
 }
